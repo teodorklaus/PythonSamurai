@@ -1,0 +1,16 @@
+How to take a new task
+1. Create and Assign a ticket
+2. git pull (get fresh version of code)
+3. create branch for new ticket(task)
+4. do little commits
+5. push created branch
+6. do pull request (your branch -> master)
+7. notify Bilobrov
+8. check out pushed branched
+    8.1 if pull request was not merged
+        consider recommendation
+        push branch
+
+    8.2 if was merged
+        take next task
+
