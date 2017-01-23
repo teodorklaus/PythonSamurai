@@ -15,10 +15,10 @@ class TestCounterNumderInList(unittest.TestCase):
         self.assertEqual(counter(0, test_list), counter_2(0, test_list))
 
 
-def gererate_random_list(length=random.randint(1, 10)):
+def gererate_random_list(length=random.randint(1, 10), mini=0, maxi=9):
     rand_list = []
     for i in range(length):
-        rand_list.append(random.randint(0, 9))
+        rand_list.append(random.randint(mini, maxi))
     return rand_list
 
 
