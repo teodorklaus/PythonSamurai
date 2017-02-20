@@ -9,7 +9,7 @@ from datetime import datetime
 class WeatherService:
     def __init__(self, key):
         self.key = key
-
+    # todo use types for better documenting
     def get_weather(self, city_name):
         """
         1. Make request to server
@@ -19,6 +19,7 @@ class WeatherService:
         :param city_name:
         :return: py obj
         """
+        # todo exract url as constant or class field and do the same to key
         response = urllib.request.urlopen('http://api.openweathermap.org/data/2.5/weather?q={}&APPID={}'
                                           .format(city_name, self.key))
         weather_json = response.read()
@@ -58,6 +59,7 @@ class Weather:
 
 class Application:
     def __init__(self):
+        # todo get accessKey from propertyFile -> see how to work with properties
         self.key = '4a98e3f0ed18bd280f800d713825cc19'
         self.service = WeatherService(self.key)
 
@@ -68,6 +70,7 @@ class Application:
                 break
 
     def main_menu(self):
+        # you may group next three lines as show menu method
         print('1.Show weather')
         print('2.Show detailed weather')
         print('3.Exit')
@@ -83,6 +86,7 @@ class Application:
     def show_detailed_weather(self):
         city_name = input('Enter city name:\n')
         weather = self.service.get_weather(city_name)
+        # perhaps weather would have self method that returns str presentation
         print('Description: {}'.format(weather.description()))
         print('Temperature: {}{}'.format(round(weather.temp() - 273), ' degree C'))
         print('Pressure: {}{}'.format(weather.pressure(), ' hPa'))
