@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+    </style>
+    <title>City information</title>
+</head>
+<body>
+<div class="city_form">
+    <form action="/" method="post">
+        <input type="text" name="city">
+        <input type="submit" value="Get information">
+    </form>
+
+</div>
+<div class="weather">
+    {% if weather_info != ''%}
+    <h1>Weather</h1>
+    {% for i in range(1, 5) %}
+    <h3>{{weather_info['signs'][i]}}:</h3>
+
+    <p>{{weather_info['values'][i]}}</p>
+    {% endfor %}
+    {% endif %}
+</div>
+<div class="pictures">
+    {% if weather_info != ''%}
+    <h1>Photos</h1>
+    {% for url in pictures_urls %}
+    <img src="{{url}}">
+    {% endfor %}
+    {% endif %}
+</div>
+{% if weather_info != ''%}
+<div id="lon" style="display:none;">{{coord.lon}}</div>
+<div id="lat" style="display:none;">{{coord.lat}}</div>
+<div id="map"></div>
+{% endif %}
+<script type="text/javascript">
+
+    // todo use jquery to get elements from the DOM also see document ready event
+    var map;
+    function initMap() {
+        var lat = Number(document.getElementById('lat').innerHTML);
+        var lng = Number(document.getElementById('lon').innerHTML);
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: lat , lng:  lng},
+            zoom: 12
+        });
+    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkv0o3OScVOKZtgkzcwyUBRgywFFkO_gc&callback=initMap">
+</script>
+
+<div class="export"></div>
+</body>
+</html>
