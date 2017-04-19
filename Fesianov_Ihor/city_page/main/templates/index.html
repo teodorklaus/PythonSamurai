@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>City information</title>
+    <meta charset="UTF-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="{{ url_for('static', filename='process.js') }}"></script>
+    <script src="{{ url_for('static', filename='map_script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+</head>
+
+<body>
+    <div class="city_form">
+        <input type="text" name="city_name" id="city_name">
+        <button id="get_info">Get information</button>
+        <div class="loader">
+            <img id="loader"  class = 'hide' src = "{{ url_for('static', filename='img1.gif') }}">
+        </div>
+    </div>
+
+    <div id="weather" class="hide">
+        <h1>Weather</h1>
+        <div id = 'info'></div>
+    </div>
+
+    <div id="pictures" class="hide">
+        <h1>Photos</h1>
+        <div id = 'urls'></div>
+    </div>
+    <div id="map" class="hide"></div>
+<script async defer src=
+        "https://maps.googleapis.com/maps/api/js?key=AIzaSyCkv0o3OScVOKZtgkzcwyUBRgywFFkO_gc&callback=initMap">
+</script>
+
+
+
+
+</body>
+</html>
